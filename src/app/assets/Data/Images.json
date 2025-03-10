@@ -1,0 +1,23 @@
+{
+  "carousel":[
+    {
+      "url": "https://i.imgur.com/nxhJhT7.jpeg",
+      "alt": "Jóvenes en acción",
+      "title": "Parque la Perla",
+      "description": "Visita al parque ecológico La Perla, Lago Agrio"
+    },
+    {
+      "url": "https://i.imgur.com/lJ6Rgr0.jpeg",
+      "alt": "Comuna Rebelión",
+      "title": "Grupo Comuna Rebelión",
+      "description":"Conocimos muchas especies de plantas y animales en esta visita."
+    },
+    {
+      "url": "https://i.imgur.com/b8ZTezC.jpeg",
+      "alt": "New York",
+      "title": "New York",
+      "description": "We love the Big Apple!"
+    }
+
+  ]
+}
