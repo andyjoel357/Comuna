@@ -1,6 +1,8 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ImagenesService } from '../../service/imagenes.service';
+import { GalleryService } from '../../service/gallery.service';
 @Component({
   selector: 'app-nosotros',
   imports: [NgFor],
@@ -8,23 +10,31 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './nosotros.component.css',
 })
 export class NosotrosComponent {
-  carouselImages = [
-
-  ];
+  service = inject(ImagenesService)
+  servc = inject(GalleryService)
+  url:any;
+  alt:any;
+  title:any;
+  description:any;
+  carouselImages: any[] = [];
 
   // Imágenes para la galería
-  galleryImages = [
-    { url: 'https://i.imgur.com/nxhJhT7.jpeg', alt: 'Foto 1' },
-    { url: 'https://i.imgur.com/lJ6Rgr0.jpeg', alt: 'Foto 2' },
-    { url: 'https://i.imgur.com/b8ZTezC.jpeg', alt: 'Foto 3' },
-    { url: 'https://i.imgur.com/QloC30h.jpeg', alt: 'Foto 4' },
-  ];
+  galleryImages: any []=[];
 
   // Imagen seleccionada para el modal
   selectedImage: string = '';
 
   constructor(private modalService: NgbModal) {}
+  ngOnInit(): void {
+    // Llama al servicio para obtener las imágenes del carrusel
+    this.service.getCarouselImages().subscribe((images) => {
+      this.carouselImages = images;
+    });
+    this.servc.getGallery().subscribe((images)=>{
+      this.galleryImages = images;
+    });
 
+  }
   // Función para abrir el modal
   openModal(imageUrl: string) {
     this.selectedImage = imageUrl;
